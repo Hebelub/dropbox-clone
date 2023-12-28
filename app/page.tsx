@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main className="">
-      <h1>Dropbox Clone</h1>
+      <h1 className="">Dropbox Clone</h1>
     </main>
   )
 }
