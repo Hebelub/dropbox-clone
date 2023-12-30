@@ -45,13 +45,23 @@ export const columns: ColumnDef<FileType>[] = [
         accessorKey: "downloadURL",
         header: "Link",
         cell: ({ renderValue, ...props }) => {
-            return <Link
-                href={renderValue() as string}
-                target="_blank"
-                className="underline text-blue-500 hover:text-blue-600"
-            >
-                Download
-            </Link>
+            const url = renderValue() as string;
+            if (!url) {
+                return null; // Or some placeholder indicating that the URL is not available
+            }
+    
+            // Use the `Link` component with the `legacyBehavior` prop
+            return (
+                <Link href={url} legacyBehavior>
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline text-blue-500 hover:text-blue-600"
+                    >
+                        Download
+                    </a>
+                </Link>
+            );
         }
-    },
+    },    
 ]
